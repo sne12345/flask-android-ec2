@@ -33,7 +33,7 @@ db.child("member").child("124124124").child("test0").child("part1").push({
 
 @app.route('/', methods = ['GET', 'POST'])
 def hello_world():
-    return "Hello naeun"
+    return "정원아 안녕 ㅎㅎ"
 
 @app.route('/one')
 def hello_one():
