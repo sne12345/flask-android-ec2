@@ -38,12 +38,12 @@ def hello_world():
 
 @app.route('/post',methods=["POST"])
 def hello_post():
-    value = request.form['key']
+    value = request.form['android_id']
     print(value)
-    value2 = request.form['key2']
+    value2 = request.form['url']
     print(value2)
 
-    return (value+value2)
+    return (value+','+value2)
 
 @app.route('/one')
 def hello_one():
