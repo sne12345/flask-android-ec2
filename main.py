@@ -39,7 +39,11 @@ def hello_world():
 @app.route('/post',methods=["POST"])
 def hello_post():
     value = request.form['key']
-    return (value)
+    print(value)
+    value2 = request.form['key2']
+    print(value2)
+
+    return (value+value2)
 
 @app.route('/one')
 def hello_one():
