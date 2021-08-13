@@ -8,6 +8,7 @@ import pyrebase
 
 app = Flask(__name__)
 
+# login으로 변경해야함
 config = {
    "apiKey": "AIzaSyASyU5Qxe0zJZDVT1-oTYEVIcDYJzZNdA8",
    "authDomain": "aitutor-894f0.firebaseapp.com",
@@ -35,9 +36,15 @@ db.child("member").child("124124124").child("test0").child("part1").push({
 def hello_world():
     return render_template("main.html")
 
+@app.route('/post',methods=["POST"])
+def hello_post():
+    value = request.form['key']
+    return (value)
+
 @app.route('/one')
 def hello_one():
     return "Hello one"
+
 
 @app.route('/two')
 def hello_two():
