@@ -24,12 +24,7 @@ config = {
 # # db settings
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
-db.child("member").child("124124124").child("test0").child("part1").push({
-       "similarity":94,"pronunciation" : 41,
-       "fluency" : 53,
-       "expression" : 64,
-       "relevance" : 72,
-       "url" : "alkjlskd1111"})
+
 
 
 @app.route('/')
@@ -50,6 +45,13 @@ def hello_post():
 
     url = request.form['url']
     print(url)
+
+    db.child("member").child(android_id).child(test_or_verify).child(part).push({
+        "similarity": 94, "pronunciation": 41,
+        "fluency": 53,
+        "expression": 64,
+        "relevance": 72,
+        "url": url})
 
     return ('서버 통신 : ' + android_id+','+test_or_verify+','+part+','+url)
 
