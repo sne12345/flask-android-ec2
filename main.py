@@ -43,7 +43,7 @@ def hello_post():
     value2 = request.form['url']
     print(value2)
 
-    return (value+','+value2)
+    return ('서버 통신 :' + value+','+value2)
 
 @app.route('/one')
 def hello_one():
