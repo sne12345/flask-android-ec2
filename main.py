@@ -20,6 +20,16 @@ config = {
    "measurementId": "G-0YF0B8C5EC"
 }
 
+# # db settings
+firebase = pyrebase.initialize_app(config)
+db = firebase.database()
+
+db.child("member").child("asdf").child("test").child("part_sdfdf").push({
+    "similarity": 94, "pronunciation": 41,
+    "fluency": 53,
+    "expression": 64,
+    "relevance": 72,
+    "url": "sdfsdfdsfs"})
 
 
 
