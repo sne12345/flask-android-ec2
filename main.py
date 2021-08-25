@@ -65,7 +65,7 @@ def hello_post():
     #     "url": url[1:]})
 
     db.child("member").child(android_id).child(test_or_verify).push({
-        "part": {
+        part: {
         "similarity": 94, "pronunciation": 41,
         "fluency": 53,
         "expression": 64,
