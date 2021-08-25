@@ -24,14 +24,6 @@ config = {
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
-db.child("member").child("asdf").child("test").child("part_sdfdf").push({
-    "similarity": 94, "pronunciation": 41,
-    "fluency": 53,
-    "expression": 64,
-    "relevance": 72,
-    "url": "sdfsdfdsfs"})
-
-
 
 
 @app.route('/')
@@ -53,9 +45,6 @@ def hello_post():
     url = request.form['url']
     print(url)
 
-    # # db settings
-    firebase = pyrebase.initialize_app(config)
-    db = firebase.database()
 
     # db.child("member").child(android_id).child(test_or_verify).child(part).push({
     #     "similarity": 94, "pronunciation": 41,
