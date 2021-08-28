@@ -8,7 +8,7 @@ import pyrebase
 
 app = Flask(__name__)
 
-# login으로 변경해야함
+# 파이어베이스 계정세팅
 config = {
   "apiKey": "AIzaSyDH9vnpXL_qMtFLjm7YbA_2p9S5vUYmd_8",
   "authDomain": "login-34159.firebaseapp.com",
@@ -46,8 +46,10 @@ def hello_post():
 
 
     # android id를 value값으로 명확하게 알 수 있게 변경하기 + 안드스튜디오에서 다른 파트도 추가하면됨, 확인테스트도 봐야함
-    db.child("member").child(android_id).child(test_or_verify).push({
-        part: {
+    db.child("member").push({
+        "android_id": android_id,
+        "test_or_verify" : test_or_verify,
+        "score" : {
         "similarity": 94, "pronunciation": 41,
         "fluency": 53,
         "expression": 64,
