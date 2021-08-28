@@ -5,10 +5,12 @@ from flask import jsonify
 from flask import redirect, url_for, send_from_directory, render_template
 import json
 import pyrebase
+import score
 
 app = Flask(__name__)
 
-# 파이어베이스 계정세팅
+
+# # 파이어베이스 계정 : Login
 config = {
   "apiKey": "AIzaSyDH9vnpXL_qMtFLjm7YbA_2p9S5vUYmd_8",
   "authDomain": "login-34159.firebaseapp.com",
@@ -24,6 +26,12 @@ config = {
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
+# # 모의고사 점수내기 테스트
+# member_test_score = score.Member_Test()
+# print(member_test_score.evaluate('./audio/20210828_092754_test_part1_8d93e3cc15c785fe.pcm'))
+# total_score = member_test_score.evaluate('./audio/20210828_092754_test_part1_8d93e3cc15c785fe.pcm')
+
+
 
 @app.route('/')
 def hello_world():
@@ -33,39 +41,27 @@ def hello_world():
 @app.route('/post',methods=["POST"])
 def hello_post():
     android_id = request.form['android_id']
-    print(android_id)
-
     test_or_verify = request.form['test_or_verify']
-    print(test_or_verify)
-
     part = request.form['part']
-    print(part)
-
     url = request.form['url']
-    print(url)
 
+    # # 모의고사 점수내기
+    member_test_score = score.Member_Test()
+    print(member_test_score.evaluate('./audio/20210828_092754_test_part1_8d93e3cc15c785fe.pcm'))
+    total_score = member_test_score.evaluate('./audio/20210828_092754_test_part1_8d93e3cc15c785fe.pcm')
 
-    # android id를 value값으로 명확하게 알 수 있게 변경하기 + 안드스튜디오에서 다른 파트도 추가하면됨, 확인테스트도 봐야함
+    # 안드스튜디오에서 다른 파트도 추가하면됨, 확인테스트도 봐야함
     db.child("member").push({
         "android_id": android_id,
         "test_or_verify" : test_or_verify,
         "score" : {
-        "similarity": 94, "pronunciation": 41,
-        "fluency": 53,
-        "expression": 64,
-        "relevance": 72,
+        "similarity": total_score['유사도'], "pronunciation": total_score['발음평가'],
+        "fluency": total_score['유창성'],
+        "expression": total_score['표현력'],
+        "relevance": total_score['주제의 연관성'],
         "url": url[1:]}})
 
     return ('서버 통신 : ' + android_id+','+test_or_verify+','+part+','+url)
-
-@app.route('/one')
-def hello_one():
-    return "Hello one"
-
-
-@app.route('/two')
-def hello_two():
-    return "Hello two"
 
 
 
