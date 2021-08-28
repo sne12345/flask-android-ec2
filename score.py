@@ -13,7 +13,7 @@ class Member_Test:
         self.test_type = "test"
 
     def get_silence(self, audio_file, threshold, interval):
-        # audio 파일을 ms단위로 분해
+        # Audio 파일을 ms단위로 분해
         user_answer = AudioSegment.from_raw(
                               audio_file,
                               sample_width=4,

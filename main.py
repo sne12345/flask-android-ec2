@@ -25,11 +25,7 @@ config = {
 # # db settings
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
-
-# # 모의고사 점수내기 테스트
-# member_test_score = score.Member_Test()
-# print(member_test_score.evaluate('./audio/20210828_092754_test_part1_8d93e3cc15c785fe.pcm'))
-# total_score = member_test_score.evaluate('./audio/20210828_092754_test_part1_8d93e3cc15c785fe.pcm')
+storage = firebase.storage()
 
 
 
@@ -41,27 +37,42 @@ def hello_world():
 @app.route('/post',methods=["POST"])
 def hello_post():
     android_id = request.form['android_id']
-    test_or_verify = request.form['test_or_verify']
-    part = request.form['part']
+    test_type = request.form['test_or_verify']
+    part_id = request.form['part']
     url = request.form['url']
+    date_time = request.form['date_time']
 
-    # # 모의고사 점수내기
+
+    # 파이어베이스 Storage에서 데이터 가져오기 => 파일 올라오는데는 시간 좀 걸림, 그래도 점수내기는 가능
+    # 평가 후에 로컬에서 삭제하는 것도 구현할 것
+    path_on_storage_and_local = 'Audio' + url
+    storage.child(path_on_storage_and_local).download(path_on_storage_and_local)
+
+    # 모의고사 점수내기
     member_test_score = score.Member_Test()
-    print(member_test_score.evaluate('./audio/20210828_092754_test_part1_8d93e3cc15c785fe.pcm'))
-    total_score = member_test_score.evaluate('./audio/20210828_092754_test_part1_8d93e3cc15c785fe.pcm')
+    total_score = member_test_score.evaluate(path_on_storage_and_local)
+    print(total_score)
+
+
+    # 날짜, 시간 데이터 받아오기
+    test_id = "test_" + date_time[1:]
+    android_db_id = "android_" + android_id
 
     # 안드스튜디오에서 다른 파트도 추가하면됨, 확인테스트도 봐야함
-    db.child("member").push({
-        "android_id": android_id,
-        "test_or_verify" : test_or_verify,
-        "score" : {
-        "similarity": total_score['유사도'], "pronunciation": total_score['발음평가'],
-        "fluency": total_score['유창성'],
-        "expression": total_score['표현력'],
-        "relevance": total_score['주제의 연관성'],
-        "url": url[1:]}})
+    db.child("member").child(android_db_id).child(test_type).update({
+        test_id : {
+            part_id : {
+                "similarity": total_score['유사도'],
+                "pronunciation": total_score['발음평가'],
+                "fluency": total_score['유창성'],
+                "expression": total_score['표현력'],
+                "relevance": total_score['주제의 연관성'],
+                "url": url[1:]
+            }
+        }
+    })
 
-    return ('서버 통신 : ' + android_id+','+test_or_verify+','+part+','+url)
+    return ('서버 통신 완료')
 
 
 
