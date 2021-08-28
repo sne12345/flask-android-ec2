@@ -10,20 +10,19 @@ app = Flask(__name__)
 
 # login으로 변경해야함
 config = {
-   "apiKey": "AIzaSyASyU5Qxe0zJZDVT1-oTYEVIcDYJzZNdA8",
-   "authDomain": "aitutor-894f0.firebaseapp.com",
-   "databaseURL": "https://aitutor-894f0-default-rtdb.firebaseio.com",
-   "projectId": "aitutor-894f0",
-   "storageBucket": "aitutor-894f0.appspot.com",
-   "messagingSenderId": "145018138005",
-   "appId": "1:145018138005:web:ea124ef3292ae2d0cb5a9c",
-   "measurementId": "G-0YF0B8C5EC"
+  "apiKey": "AIzaSyDH9vnpXL_qMtFLjm7YbA_2p9S5vUYmd_8",
+  "authDomain": "login-34159.firebaseapp.com",
+  "databaseURL": "https://login-34159-default-rtdb.firebaseio.com",
+  "projectId": "login-34159",
+  "storageBucket": "login-34159.appspot.com",
+  "messagingSenderId": "930147078212",
+  "appId": "1:930147078212:web:d4904676bf467f12036c11",
+  "measurementId": "G-EP22J4P7YQ"
 }
 
 # # db settings
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
-
 
 
 @app.route('/')
@@ -46,13 +45,7 @@ def hello_post():
     print(url)
 
 
-    # db.child("member").child(android_id).child(test_or_verify).child(part).push({
-    #     "similarity": 94, "pronunciation": 41,
-    #     "fluency": 53,
-    #     "expression": 64,
-    #     "relevance": 72,
-    #     "url": url[1:]})
-
+    # android id를 value값으로 명확하게 알 수 있게 변경하기 + 안드스튜디오에서 다른 파트도 추가하면됨, 확인테스트도 봐야함
     db.child("member").child(android_id).child(test_or_verify).push({
         part: {
         "similarity": 94, "pronunciation": 41,
