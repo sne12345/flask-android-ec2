@@ -5,7 +5,7 @@ from flask import jsonify
 from flask import redirect, url_for, send_from_directory, render_template
 import json
 import pyrebase
-import score
+# import score
 
 app = Flask(__name__)
 
@@ -67,7 +67,7 @@ def hello_post():
     #             "fluency": total_score['유창성'],
     #             "expression": total_score['표현력'],
     #             "relevance": total_score['주제의 연관성'],
-    #             "url": url[1:]
+    #             "url": url
     #         }
     #     }
     # })
@@ -81,7 +81,7 @@ def hello_post():
                 "fluency": 100,
                 "expression": 100,
                 "relevance": 100,
-                "url": url[1:]
+                "url": url
             }
         }
     })
