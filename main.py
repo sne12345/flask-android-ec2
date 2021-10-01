@@ -45,7 +45,7 @@ def hello_post():
 
     # 파이어베이스 Storage에서 데이터 가져오기 => 파일 올라오는데는 시간 좀 걸림, 그래도 점수내기는 가능
     # 평가 후에 로컬에서 삭제하는 것도 구현할 것
-    path_on_storage_and_local = 'Audio' + url
+    path_on_storage_and_local = 'User' + android_id + '/' + url
     storage.child(path_on_storage_and_local).download(path_on_storage_and_local)
 
     # 모의고사 점수내기
