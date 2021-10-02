@@ -31,17 +31,7 @@ storage = firebase.storage()
 
 @app.route('/')
 def hello_world():
-    member_test_score = score.Member_Test()
-
-    # 파이어베이스 Storage에서 데이터 가져오기
-    path_on_storage_and_local = 'User/eb639fb6b2815425/No1_eb639fb6b2815425_20211001_102218_test.mp3'
-    storage.child(path_on_storage_and_local).download('./Audio/No1_eb639fb6b2815425_20211001_102218_test.mp3')
-
-    answer = '제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.'
-    result = member_test_score.evaluate('./test/TEST1.mp3', answer)
-
-    return result
-    # return render_template("main.html")
+    return render_template("main.html")
 
 @app.route('/post',methods=["POST"])
 def hello_post():
