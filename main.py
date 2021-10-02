@@ -5,7 +5,7 @@ from flask import jsonify
 from flask import redirect, url_for, send_from_directory, render_template
 import json
 import pyrebase
-# import score
+import score
 
 app = Flask(__name__)
 
@@ -31,8 +31,14 @@ storage = firebase.storage()
 
 @app.route('/')
 def hello_world():
-    return render_template("main.html")
-    # return "Hello World"
+    member_test_score = score.Member_Test()
+
+    answer = '제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.'
+    
+    result = member_test_score.evaluate('./test/TEST1.mp3', answer)
+
+    return result
+    # return render_template("main.html")
 
 @app.route('/post',methods=["POST"])
 def hello_post():
