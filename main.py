@@ -54,10 +54,10 @@ def hello_post():
 
         # Storage에서 mp3 파일 다운받기
         part_url_name = 'part' + i + '_url'
-        part_url = request.form[part_url_name]
+        storage_audio_path = request.form[part_url_name]
 
-        local_audio_path = './Audio/' + part_url[6:]
-        storage.child(part_url).download(local_audio_path)
+        local_audio_path = './Audio/' + storage_audio_path[6:]
+        storage.child(storage_audio_path).download(local_audio_path)
 
         # 채점하기
         part_score = member_test_score.evaluate(local_audio_path, answer_list[i])
@@ -74,7 +74,7 @@ def hello_post():
                     "fluency": part_score['유창성'],
                     "expression": part_score['표현력'],
                     "relevance": part_score['주제의 연관성'],
-                    "url": part_url
+                    "url": storage_audio_path
                 }
             }
         })
