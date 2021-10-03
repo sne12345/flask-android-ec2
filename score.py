@@ -234,23 +234,23 @@ class Member_Test:
         komoran = Komoran()
         model = Word2Vec.load('model/ko.bin')
 
-        return '평가 완료'
+        # return '평가 완료'
 
-        # user_token, user_nouns, user_all_token = self.tokenizing(komoran, user)
-        # answer_token, answer_nouns, answer_all_token = self.tokenizing(komoran, answer)
-        # user_dict = self.expression(user, user_token, user_all_token)
-        # answer_dict = self.expression(answer, answer_token, answer_all_token)
+        user_token, user_nouns, user_all_token = self.tokenizing(komoran, user)
+        answer_token, answer_nouns, answer_all_token = self.tokenizing(komoran, answer)
+        user_dict = self.expression(user, user_token, user_all_token)
+        answer_dict = self.expression(answer, answer_token, answer_all_token)
 
-        # answer_keyword = self.keyword(answer_nouns)
-        # user_keyword = self.keyword(user_nouns)
+        answer_keyword = self.keyword(answer_nouns)
+        user_keyword = self.keyword(user_nouns)
 
-        # flu = self.score_fluency(audio_segment)
-        # pro = score
-        # exp = self.score_expression(user_dict, answer_dict)
-        # sim = self.score_similarity(user_all_token, user_nouns, answer_all_token, answer_nouns)
-        # rel = self.score_relevance(model, answer_keyword, user_keyword)
+        flu = self.score_fluency(audio_segment)
+        pro = score
+        exp = self.score_expression(user_dict, answer_dict)
+        sim = self.score_similarity(user_all_token, user_nouns, answer_all_token, answer_nouns)
+        rel = self.score_relevance(model, answer_keyword, user_keyword)
 
-        # return dict(zip(['유창성', '발음평가', '표현력', '유사도', '주제의 연관성'], [flu, pro, exp, sim, rel]))
+        return dict(zip(['유창성', '발음평가', '표현력', '유사도', '주제의 연관성'], [flu, pro, exp, sim, rel]))
 
 
 
