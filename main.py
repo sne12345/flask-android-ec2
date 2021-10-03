@@ -35,49 +35,49 @@ def hello_world():
 
 @app.route('/post',methods=["POST"])
 def hello_post():
-    android_id = request.form['android_id']
-    test_type = request.form['test_or_verify']
-    date_time = request.form['date_time']
+    # android_id = request.form['android_id']
+    # test_type = request.form['test_or_verify']
+    # date_time = request.form['date_time']
 
 
-    # 모의고사 점수내기
-    member_test_score = score.Member_Test()
-    answer_list = ['제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.']
+    # # 모의고사 점수내기
+    # member_test_score = score.Member_Test()
+    # answer_list = ['제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.']
 
 
-    # 날짜, 시간 데이터 준비하기
-    test_id = "test_" + date_time[1:]
-    android_db_id = "android_" + android_id
+    # # 날짜, 시간 데이터 준비하기
+    # test_id = "test_" + date_time[1:]
+    # android_db_id = "android_" + android_id
 
-    # 파이어베이스 Storage에서 데이터 가져오기 
-    # for i in range(6):
+    # # 파이어베이스 Storage에서 데이터 가져오기 
+    # # for i in range(6):
 
-    # Storage에서 mp3 파일 다운받기
-    part_url_name = 'part1_url'
-    storage_audio_path = request.form[part_url_name]
+    # # Storage에서 mp3 파일 다운받기
+    # part_url_name = 'part1_url'
+    # storage_audio_path = request.form[part_url_name]
 
-    local_audio_path = './Audio/' + storage_audio_path[5:]
-    storage.child(storage_audio_path).download(local_audio_path)
+    # local_audio_path = './Audio/' + storage_audio_path[5:]
+    # storage.child(storage_audio_path).download(local_audio_path)
 
-    # 채점하기
-    part_score = member_test_score.evaluate(local_audio_path, answer_list[0])
+    # # 채점하기
+    # part_score = member_test_score.evaluate(local_audio_path, answer_list[0])
 
-    # 파트 id
-    part_id = "part_1"
+    # # 파트 id
+    # part_id = "part_1"
 
-    # 안드스튜디오에서 다른 파트도 추가하면됨, 확인테스트도 봐야함
-    db.child("member").child(android_db_id).child(test_type).update({
-        test_id : {
-            part_id : {
-                "similarity": part_score['유사도'],
-                "pronunciation": part_score['발음평가'],
-                "fluency": part_score['유창성'],
-                "expression": part_score['표현력'],
-                "relevance": part_score['주제의 연관성'],
-                "url": storage_audio_path
-            }
-        }
-    })
+    # # 안드스튜디오에서 다른 파트도 추가하면됨, 확인테스트도 봐야함
+    # db.child("member").child(android_db_id).child(test_type).update({
+    #     test_id : {
+    #         part_id : {
+    #             "similarity": part_score['유사도'],
+    #             "pronunciation": part_score['발음평가'],
+    #             "fluency": part_score['유창성'],
+    #             "expression": part_score['표현력'],
+    #             "relevance": part_score['주제의 연관성'],
+    #             "url": storage_audio_path
+    #         }
+    #     }
+    # })
 
 
     # score.py 완성되기 전까지 서버 통신 코드
