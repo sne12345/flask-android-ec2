@@ -41,7 +41,7 @@ def hello_world():
     storage_audio_path = 'User/32f306540a19e3e9/No1_32f306540a19e3e9_20211004_032205_test.mp3'
 
     local_audio_path = './Audio/' + storage_audio_path[-45:]
-    # storage.child(storage_audio_path).download(local_audio_path)
+    storage.child(storage_audio_path).download(local_audio_path)
 
     part_score = member_test_score.evaluate(local_audio_path, answer_list[0])
 

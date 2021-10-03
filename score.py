@@ -162,6 +162,8 @@ class Member_Test:
         word_len_list = [len(t) for t in token]
         sent_len = len(token) # 5초 길이 텍스트 수
         word_len = sum(word_len_list)  # 총 단어 수
+
+        # 0으로 나누는 거 방지 -> 코드 고치기
         if sent_len == 0:
             sent_len = 1
         avg_len = word_len // sent_len  # 5초 당 평균 단어 수
@@ -212,6 +214,8 @@ class Member_Test:
                     pass
 
         key_sim = Member_Test.text_similarity(user_keyword, answer_keyword)
+
+        # 0으로 나누는 거 방지 -> 코드 고치기
         if len(sim_list) == 0:
             len_sim_list = 1
         else:
@@ -221,29 +225,30 @@ class Member_Test:
         return score
 
     def evaluate(self, audio_file, answer):
-        # test = Member_Test()
         audio_segment = self.processing_audio(audio_file)
         audioContents = self.segment(audio_segment, interval=5000)
 
-        user, score = self.score_pronunciation(audioContents)
-        komoran = Komoran()
-        model = Word2Vec.load('model/ko.bin')
+        return '평가 완료'
 
-        user_token, user_nouns, user_all_token = self.tokenizing(komoran, user)
-        answer_token, answer_nouns, answer_all_token = self.tokenizing(komoran, answer)
-        user_dict = self.expression(user, user_token, user_all_token)
-        answer_dict = self.expression(answer, answer_token, answer_all_token)
+        # user, score = self.score_pronunciation(audioContents)
+        # komoran = Komoran()
+        # model = Word2Vec.load('model/ko.bin')
 
-        answer_keyword = self.keyword(answer_nouns)
-        user_keyword = self.keyword(user_nouns)
+        # user_token, user_nouns, user_all_token = self.tokenizing(komoran, user)
+        # answer_token, answer_nouns, answer_all_token = self.tokenizing(komoran, answer)
+        # user_dict = self.expression(user, user_token, user_all_token)
+        # answer_dict = self.expression(answer, answer_token, answer_all_token)
 
-        flu = self.score_fluency(audio_segment)
-        pro = score
-        exp = self.score_expression(user_dict, answer_dict)
-        sim = self.score_similarity(user_all_token, user_nouns, answer_all_token, answer_nouns)
-        rel = self.score_relevance(model, answer_keyword, user_keyword)
+        # answer_keyword = self.keyword(answer_nouns)
+        # user_keyword = self.keyword(user_nouns)
 
-        return dict(zip(['유창성', '발음평가', '표현력', '유사도', '주제의 연관성'], [flu, pro, exp, sim, rel]))
+        # flu = self.score_fluency(audio_segment)
+        # pro = score
+        # exp = self.score_expression(user_dict, answer_dict)
+        # sim = self.score_similarity(user_all_token, user_nouns, answer_all_token, answer_nouns)
+        # rel = self.score_relevance(model, answer_keyword, user_keyword)
+
+        # return dict(zip(['유창성', '발음평가', '표현력', '유사도', '주제의 연관성'], [flu, pro, exp, sim, rel]))
 
 
 
