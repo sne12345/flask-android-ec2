@@ -43,10 +43,10 @@ def hello_world():
     local_audio_path = './Audio/' + storage_audio_path[-45:]
     # storage.child(storage_audio_path).download(local_audio_path)
 
-    # part_score = member_test_score.evaluate(local_audio_path, answer_list[0])
+    part_score = member_test_score.evaluate(local_audio_path, answer_list[0])
 
-    # return part_score
-    return render_template("main.html")
+    return part_score
+    # return render_template("main.html")
 
 @app.route('/post',methods=["POST"])
 def hello_post():
