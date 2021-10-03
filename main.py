@@ -35,29 +35,29 @@ def hello_world():
 
 @app.route('/post',methods=["POST"])
 def hello_post():
-    # android_id = request.form['android_id']
-    # test_type = request.form['test_or_verify']
-    # date_time = request.form['date_time']
+    android_id = request.form['android_id']
+    test_type = request.form['test_or_verify']
+    date_time = request.form['date_time']
 
 
-    # # 모의고사 점수내기
-    # member_test_score = score.Member_Test()
-    # answer_list = ['제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.']
+    # 모의고사 점수내기
+    member_test_score = score.Member_Test()
+    answer_list = ['제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.']
 
 
-    # # 날짜, 시간 데이터 준비하기
-    # test_id = "test_" + date_time[1:]
-    # android_db_id = "android_" + android_id
+    # 날짜, 시간 데이터 준비하기
+    test_id = "test_" + date_time[1:]
+    android_db_id = "android_" + android_id
 
     # # 파이어베이스 Storage에서 데이터 가져오기 
     # # for i in range(6):
 
-    # # Storage에서 mp3 파일 다운받기
-    # part_url_name = 'part1_url'
-    # storage_audio_path = request.form[part_url_name]
+    # Storage에서 mp3 파일 다운받기
+    part_url_name = 'part1_url'
+    storage_audio_path = request.form[part_url_name]
 
-    # local_audio_path = './Audio/' + storage_audio_path[5:]
-    # storage.child(storage_audio_path).download(local_audio_path)
+    local_audio_path = './Audio/' + storage_audio_path[5:]
+    storage.child(storage_audio_path).download(local_audio_path)
 
     # # 채점하기
     # part_score = member_test_score.evaluate(local_audio_path, answer_list[0])
