@@ -67,7 +67,7 @@ def hello_post():
     storage_audio_paths = ""
 
     # 파이어베이스 Storage에서 데이터 가져오기 
-    for i in range(6):
+    for i in range(2):
 
         # Storage에서 mp3 파일 다운받기
         part_url_name = 'part' + str(i + 1) + '_url'
