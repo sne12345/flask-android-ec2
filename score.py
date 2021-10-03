@@ -231,7 +231,7 @@ class Member_Test:
         
 
         user, score = self.score_pronunciation(audioContents)
-        komoran = Komoran()
+        # komoran = Komoran()
         # model = Word2Vec.load('model/ko.bin')
 
         return '평가 완료'
