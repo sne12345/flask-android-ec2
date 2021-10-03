@@ -37,7 +37,7 @@ def hello_world():
 def hello_post():
     android_id = request.form['android_id']
     test_type = request.form['test_or_verify']
-    date_time = request.form['date_time']
+    start_date = request.form['date_time']
 
 
     # 모의고사 점수내기
@@ -46,7 +46,7 @@ def hello_post():
 
 
     # 날짜, 시간 데이터 준비하기
-    test_id = "test_" + date_time[1:]
+    test_id = "test_" + start_date[1:]
     android_db_id = "android_" + android_id
 
     storage_audio_paths = ""
@@ -59,7 +59,7 @@ def hello_post():
         storage_audio_path = request.form[part_url_name]
 
         local_audio_path = './Audio/' + storage_audio_path[-45:]
-        storage.child(storage_audio_path).download(local_audio_path)
+        # storage.child(storage_audio_path).download(local_audio_path)
 
         # # 채점하기
         # part_score = member_test_score.evaluate(local_audio_path, answer_list[i])
