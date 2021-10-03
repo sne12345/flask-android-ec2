@@ -49,7 +49,7 @@ def hello_post():
     test_id = "test_" + date_time[1:]
     android_db_id = "android_" + android_id
 
-    local_audio_paths = ""
+    storage_audio_paths = ""
 
     # 파이어베이스 Storage에서 데이터 가져오기 
     for i in range(6):
@@ -81,7 +81,7 @@ def hello_post():
         #     }
         # })
 
-        local_audio_paths += local_audio_path
+        storage_audio_paths += storage_audio_path
 
 
     # score.py 완성되기 전까지 서버 통신 코드
@@ -98,7 +98,7 @@ def hello_post():
     #     }
     # })
 
-    return local_audio_paths
+    return storage_audio_paths
     # return ('서버 통신 완료')
 
 
