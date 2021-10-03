@@ -162,6 +162,8 @@ class Member_Test:
         word_len_list = [len(t) for t in token]
         sent_len = len(token) # 5초 길이 텍스트 수
         word_len = sum(word_len_list)  # 총 단어 수
+        if sent_len == 0:
+            sent_len = 1
         avg_len = word_len // sent_len  # 5초 당 평균 단어 수
 
         return {'text_len': text_len, 'word_len': word_len, 'avg_len': avg_len}
@@ -210,7 +212,11 @@ class Member_Test:
                     pass
 
         key_sim = Member_Test.text_similarity(user_keyword, answer_keyword)
-        score = round((sum(sim_list) / len(sim_list)) * 50 + (key_sim * 0.5))
+        if len(sim_list) == 0:
+            len_sim_list = 1
+        else:
+            len_sim_list = len(sim_list)
+        score = round((sum(sim_list) / len_sim_list) * 50 + (key_sim * 0.5))
 
         return score
 
