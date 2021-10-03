@@ -52,14 +52,14 @@ def hello_post():
     storage_audio_paths = ""
 
     # 파이어베이스 Storage에서 데이터 가져오기 
-    for i in range(6):
+    for i in range(1):
 
         # Storage에서 mp3 파일 다운받기
         part_url_name = 'part' + str(i + 1) + '_url'
         storage_audio_path = request.form[part_url_name]
 
         local_audio_path = './Audio/' + storage_audio_path[-45:]
-        # storage.child(storage_audio_path).download(local_audio_path)
+        storage.child(storage_audio_path).download(local_audio_path)
 
         # # 채점하기
         # part_score = member_test_score.evaluate(local_audio_path, answer_list[i])
