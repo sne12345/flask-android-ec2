@@ -59,7 +59,7 @@ def hello_post():
         storage_audio_path = request.form[part_url_name]
 
         local_audio_path = './Audio/' + storage_audio_path[-45:]
-        # storage.child(storage_audio_path).download(local_audio_path)
+        storage.child(storage_audio_path).download(local_audio_path)
 
         # # 채점하기
         # part_score = member_test_score.evaluate(local_audio_path, answer_list[i])
