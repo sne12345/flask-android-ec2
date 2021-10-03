@@ -225,8 +225,8 @@ class Member_Test:
         return score
 
     def evaluate(self, audio_file, answer):
-        audio_segment = self.processing_audio(audio_file)
-        audioContents = self.segment(audio_segment, interval=5000)
+        # audio_segment = self.processing_audio(audio_file)
+        # audioContents = self.segment(audio_segment, interval=5000)
 
         return '평가 완료'
 
