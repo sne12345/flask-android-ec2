@@ -231,10 +231,8 @@ class Member_Test:
         
 
         user, score = self.score_pronunciation(audioContents)
-        komoran = Komoran()
-        model = Word2Vec.load('model/ko.bin')
-
-        # return '평가 완료'
+        komoran = Komoran()                   # 로드하는데 오래걸리니까 main.py에서 처리할 것
+        model = Word2Vec.load('model/ko.bin') # 로드하는데 오래걸리니까 main.py에서 처리할 것
 
         user_token, user_nouns, user_all_token = self.tokenizing(komoran, user)
         answer_token, answer_nouns, answer_all_token = self.tokenizing(komoran, answer)
