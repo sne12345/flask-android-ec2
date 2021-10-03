@@ -32,12 +32,18 @@ storage = firebase.storage()
 @app.route('/')
 def hello_world():
 
+    # 모의고사 점수내기
+    member_test_score = score.Member_Test()
+
+    answer_list = ['제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.']
 
     # Storage에서 mp3 파일 다운받기
     storage_audio_path = 'User/32f306540a19e3e9/No2_32f306540a19e3e9_20211004_014620_test.mp3'
 
     local_audio_path = './Audio/' + storage_audio_path[-45:]
     storage.child(storage_audio_path).download(local_audio_path)
+
+    part_score = member_test_score.evaluate(local_audio_path, answer_list[0])
 
     return render_template("main.html")
 
@@ -60,17 +66,17 @@ def hello_post():
     storage_audio_paths = ""
 
     # 파이어베이스 Storage에서 데이터 가져오기 
-    for i in range(1,7):
+    for i in range(6):
 
         # Storage에서 mp3 파일 다운받기
-        part_url_name = 'part' + str(i) + '_url'
+        part_url_name = 'part' + str(i + 1) + '_url'
         storage_audio_path = request.form[part_url_name]
 
         local_audio_path = './Audio/' + storage_audio_path[-45:]
         storage.child(storage_audio_path).download(local_audio_path)
 
         # 채점하기
-        part_score = member_test_score.evaluate(local_audio_path, answer_list[i - 1])
+        part_score = member_test_score.evaluate(local_audio_path, answer_list[i])
 
         # 파트 id
         # part_id = "part_" + str(i)
