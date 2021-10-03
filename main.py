@@ -49,6 +49,8 @@ def hello_post():
     test_id = "test_" + date_time[1:]
     android_db_id = "android_" + android_id
 
+    local_audio_paths = ""
+
     # 파이어베이스 Storage에서 데이터 가져오기 
     for i in range(6):
 
@@ -57,27 +59,29 @@ def hello_post():
         storage_audio_path = request.form[part_url_name]
 
         local_audio_path = './Audio/' + storage_audio_path[-45:]
-        storage.child(storage_audio_path).download(local_audio_path)
+        # storage.child(storage_audio_path).download(local_audio_path)
 
-        # 채점하기
-        part_score = member_test_score.evaluate(local_audio_path, answer_list[i])
+        # # 채점하기
+        # part_score = member_test_score.evaluate(local_audio_path, answer_list[i])
 
-        # 파트 id
-        part_id = "part_" + str(i + 1)
+        # # 파트 id
+        # part_id = "part_" + str(i + 1)
 
-        # 안드스튜디오에서 다른 파트도 추가하면됨, 확인테스트도 봐야함
-        db.child("member").child(android_db_id).child(test_type).update({
-            test_id : {
-                part_id : {
-                    "similarity": part_score['유사도'],
-                    "pronunciation": part_score['발음평가'],
-                    "fluency": part_score['유창성'],
-                    "expression": part_score['표현력'],
-                    "relevance": part_score['주제의 연관성'],
-                    "url": storage_audio_path
-                }
-            }
-        })
+        # # 안드스튜디오에서 다른 파트도 추가하면됨, 확인테스트도 봐야함
+        # db.child("member").child(android_db_id).child(test_type).update({
+        #     test_id : {
+        #         part_id : {
+        #             "similarity": part_score['유사도'],
+        #             "pronunciation": part_score['발음평가'],
+        #             "fluency": part_score['유창성'],
+        #             "expression": part_score['표현력'],
+        #             "relevance": part_score['주제의 연관성'],
+        #             "url": storage_audio_path
+        #         }
+        #     }
+        # })
+
+        local_audio_paths += local_audio_path
 
 
     # score.py 완성되기 전까지 서버 통신 코드
@@ -94,7 +98,8 @@ def hello_post():
     #     }
     # })
 
-    return ('서버 통신 완료')
+    return local_audio_paths
+    # return ('서버 통신 완료')
 
 
 
