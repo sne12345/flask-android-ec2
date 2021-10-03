@@ -228,11 +228,13 @@ class Member_Test:
         audio_segment = self.processing_audio(audio_file)
         audioContents = self.segment(audio_segment, interval=5000)
 
-        return '평가 완료'
+        
 
-        # user, score = self.score_pronunciation(audioContents)
-        # komoran = Komoran()
-        # model = Word2Vec.load('model/ko.bin')
+        user, score = self.score_pronunciation(audioContents)
+        komoran = Komoran()
+        model = Word2Vec.load('model/ko.bin')
+
+        return '평가 완료'
 
         # user_token, user_nouns, user_all_token = self.tokenizing(komoran, user)
         # answer_token, answer_nouns, answer_all_token = self.tokenizing(komoran, answer)
