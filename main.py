@@ -53,17 +53,17 @@ def hello_post():
     for i in range(6):
 
         # Storage에서 mp3 파일 다운받기
-        part_url_name = 'part' + i + '_url'
+        part_url_name = 'part' + str(i) + '_url'
         storage_audio_path = request.form[part_url_name]
 
-        local_audio_path = './Audio/' + storage_audio_path[6:]
+        local_audio_path = './Audio/' + storage_audio_path[5:]
         storage.child(storage_audio_path).download(local_audio_path)
 
         # 채점하기
         part_score = member_test_score.evaluate(local_audio_path, answer_list[i])
 
         # 파트 id
-        part_id = "part_" + i
+        part_id = "part_" + str(i + 1)
 
         # 안드스튜디오에서 다른 파트도 추가하면됨, 확인테스트도 봐야함
         db.child("member").child(android_db_id).child(test_type).update({
