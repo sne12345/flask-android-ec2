@@ -31,6 +31,14 @@ storage = firebase.storage()
 
 @app.route('/')
 def hello_world():
+
+
+    # Storage에서 mp3 파일 다운받기
+    storage_audio_path = 'User/32f306540a19e3e9/No2_32f306540a19e3e9_20211004_014620_test.mp3'
+
+    local_audio_path = './Audio/' + storage_audio_path[-45:]
+    storage.child(storage_audio_path).download(local_audio_path)
+
     return render_template("main.html")
 
 @app.route('/post',methods=["POST"])
