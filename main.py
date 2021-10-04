@@ -38,10 +38,10 @@ def hello_world():
     answer_list = ['제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.']
 
     # Storage에서 mp3 파일 다운받기
-    storage_audio_path = 'User/32f306540a19e3e9/No1_32f306540a19e3e9_20211004_032205_test.mp3'
+    storage_audio_path = 'User/32f306540a19e3e9/No5_32f306540a19e3e9_20211004_030835_test.mp3'
 
     local_audio_path = './Audio/' + storage_audio_path[-45:]
-    # storage.child(storage_audio_path).download(local_audio_path)
+    storage.child(storage_audio_path).download(local_audio_path)
 
     part_score = member_test_score.evaluate(local_audio_path, answer_list[0])
 
