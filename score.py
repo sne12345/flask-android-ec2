@@ -246,7 +246,7 @@ class Member_Test:
         answer_keyword = self.keyword(answer_nouns)
         user_keyword = self.keyword(user_nouns)
 
-        return "점수 계산 완료"
+        # return "점수 계산 완료"
 
         flu = self.score_fluency(audio_segment)
         pro = score
