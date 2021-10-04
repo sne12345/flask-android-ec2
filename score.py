@@ -241,10 +241,12 @@ class Member_Test:
         user_dict = self.expression(user, user_token, user_all_token)
         answer_dict = self.expression(answer, answer_token, answer_all_token)
 
-        return "점수 계산 완료"
+        
 
         answer_keyword = self.keyword(answer_nouns)
         user_keyword = self.keyword(user_nouns)
+
+        return "점수 계산 완료"
 
         flu = self.score_fluency(audio_segment)
         pro = score
