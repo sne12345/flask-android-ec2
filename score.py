@@ -234,12 +234,14 @@ class Member_Test:
         komoran = Komoran()                   # 로드하는데 오래걸리니까 main.py에서 처리할 것
         model = Word2Vec.load('model/ko.bin') # 로드하는데 오래걸리니까 main.py에서 처리할 것
 
-        return "점수 계산 완료"
+        
 
         user_token, user_nouns, user_all_token = self.tokenizing(komoran, user)
         answer_token, answer_nouns, answer_all_token = self.tokenizing(komoran, answer)
         user_dict = self.expression(user, user_token, user_all_token)
         answer_dict = self.expression(answer, answer_token, answer_all_token)
+
+        return "점수 계산 완료"
 
         answer_keyword = self.keyword(answer_nouns)
         user_keyword = self.keyword(user_nouns)
