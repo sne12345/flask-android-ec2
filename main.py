@@ -6,9 +6,9 @@ from flask import redirect, url_for, send_from_directory, render_template
 import json
 import pyrebase
 import score
-
 app = Flask(__name__)
 
+from konlpy.tag import Komoran
 
 # # 파이어베이스 계정 : Login
 config = {
@@ -32,21 +32,7 @@ storage = firebase.storage()
 @app.route('/')
 def hello_world():
 
-    # 모의고사 점수내기
-    member_test_score = score.Member_Test()
-
-    answer_list = ['제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.']
-
-    # Storage에서 mp3 파일 다운받기
-    storage_audio_path = 'User/32f306540a19e3e9/No5_32f306540a19e3e9_20211004_030835_test.mp3'
-
-    local_audio_path = './Audio/' + storage_audio_path[-45:]
-    storage.child(storage_audio_path).download(local_audio_path)
-
-    part_score = member_test_score.evaluate(local_audio_path, answer_list[0])
-
-    return part_score
-    # return render_template("main.html")
+    return render_template("main.html")
 
 @app.route('/post',methods=["POST"])
 def hello_post():
@@ -57,7 +43,7 @@ def hello_post():
 
     # 모의고사 점수내기
     member_test_score = score.Member_Test()
-    answer_list = ['제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.']
+    answer_list = ['제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.','직진 후 좌회전하고 도서관이 보이면 우회전을 해주세요. 왼쪽에 기숙사가 보일거에요. 그곳에 내려주시면 됩니다.','민수씨는 대회 전날에 춤 연습을 하였습니다. 대회 당일에는 다른 팀이 공연하는 것을 관람하였습니다. 민수씨네 팀도 공연을 하였으며 우승을 차지하였습니다.','안내문을 보지 못 하는 경우도 있을 수 있어요. 놀이터를 관리하는 관리인을 두고 어린이들이 사용하지 못하도록 관리하는 건 어떨까요?','인터넷 금융 거래 이용률이 2010년 25퍼센트에서 2020년 60퍼센트로 크게 증가하면서 은행 지점을 이용하는 사람은 10년 동안 천 개 이상  줄었습니다.','리더는 구성원들이 자발적, 의욕적으로 역량을 발휘할 수 있도록 환경을 조성해주는 것입니다.']
 
 
     # 날짜, 시간 데이터 준비하기
@@ -66,8 +52,10 @@ def hello_post():
 
     storage_audio_paths = ""
 
+    total_score = {'similarity':0, 'pronunciation':0, 'fluency':0,'expression':0,'relevance':0}
+
     # 파이어베이스 Storage에서 데이터 가져오기 
-    for i in range(2):
+    for i in range(6):
 
         # Storage에서 mp3 파일 다운받기
         part_url_name = 'part' + str(i + 1) + '_url'
@@ -78,43 +66,33 @@ def hello_post():
 
         # 채점하기
         part_score = member_test_score.evaluate(local_audio_path, answer_list[i])
+        print(part_score)
 
         # 파트 id
-        # part_id = "part_" + str(i)
+        part_id = "part_" + str(i)
 
         # # 안드스튜디오에서 다른 파트도 추가하면됨, 확인테스트도 봐야함
-        # db.child("member").child(android_db_id).child(test_type).update({
-        #     test_id : {
-        #         part_id : {
-        #             "similarity": part_score['유사도'],
-        #             "pronunciation": part_score['발음평가'],
-        #             "fluency": part_score['유창성'],
-        #             "expression": part_score['표현력'],
-        #             "relevance": part_score['주제의 연관성'],
-        #             "url": storage_audio_path
-        #         }
-        #     }
-        # })
+        db.child("member").child(android_db_id).child(test_type).update({
+            test_id : {
+                 part_id : {
+                     "similarity": part_score['similarity'],
+                     "pronunciation": part_score['pronunciation'],
+                     "fluency": part_score['fluency'],
+                     "expression": part_score['expression'],
+                     "relevance": part_score['correlation'],
+                     "url": storage_audio_path
+                 }
+             }
+         })
+        total_score['similarity'] += part_score['similarity']
+        total_score['pronunciation'] += part_score['pronunciation']
+        total_score['fluency'] += part_score['fluency']
+        total_score['expression'] += part_score['expression']
+        total_score['relevance'] += part_score['correlation']
+    
+    result_score = str(total_score['similarity']/6) + ' ' + str(total_score['pronunciation']/6) + ' ' +  str(total_score['fluency']/6) + ' ' + str(total_score['expression']/6) + ' ' + str(total_score['relevance']/6)
 
-        storage_audio_paths += storage_audio_path
-
-
-    # score.py 완성되기 전까지 서버 통신 코드
-    # db.child("member").child(android_db_id).child(test_type).update({
-    #     test_id : {
-    #         part_id : {
-    #             "similarity": 100,
-    #             "pronunciation": 100,
-    #             "fluency": 100,
-    #             "expression": 100,
-    #             "relevance": 100,
-    #             "url": url
-    #         }
-    #     }
-    # })
-
-    return storage_audio_paths
-    # return ('서버 통신 완료')
+    return result_score
 
 
 

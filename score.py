@@ -231,22 +231,16 @@ class Member_Test:
         
 
         user, score = self.score_pronunciation(audioContents)
-        komoran = Komoran()                   # 로드하는데 오래걸리니까 main.py에서 처리할 것
-        model = Word2Vec.load('model/ko.bin') # 로드하는데 오래걸리니까 main.py에서 처리할 것
-
-        
+        komoran = Komoran()                   
+        model = Word2Vec.load('model/ko.bin') 
 
         user_token, user_nouns, user_all_token = self.tokenizing(komoran, user)
         answer_token, answer_nouns, answer_all_token = self.tokenizing(komoran, answer)
         user_dict = self.expression(user, user_token, user_all_token)
         answer_dict = self.expression(answer, answer_token, answer_all_token)
 
-        
-
         answer_keyword = self.keyword(answer_nouns)
         user_keyword = self.keyword(user_nouns)
-
-        # return "점수 계산 완료"
 
         flu = self.score_fluency(audio_segment)
         pro = score
@@ -254,8 +248,7 @@ class Member_Test:
         sim = self.score_similarity(user_all_token, user_nouns, answer_all_token, answer_nouns)
         rel = self.score_relevance(model, answer_keyword, user_keyword)
 
-        return dict(zip(['유창성', '발음평가', '표현력', '유사도', '주제의 연관성'], [flu, pro, exp, sim, rel]))
-
+        return dict(zip(['fluency', 'pronunciation', 'expression', 'similarity', 'correlation'], [flu, pro, exp, sim, rel]))
 
 
 
