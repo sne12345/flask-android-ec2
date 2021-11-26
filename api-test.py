@@ -2,6 +2,7 @@
 import urllib3
 import json
 import base64
+import time
 
 #openApiURL = "http://aiopen.etri.re.kr:8000/WiseASR/Pronunciation"  # 영어
 openApiURL = "http://aiopen.etri.re.kr:8000/WiseASR/PronunciationKor" # 한국어
@@ -25,13 +26,21 @@ requestJson = {
 }
 
 http = urllib3.PoolManager()
-response = http.request(
-    "POST",
-    openApiURL,
-    headers={"Content-Type": "application/json; charset=UTF-8"},
-    body=json.dumps(requestJson)
-)
-
+try:
+    response = http.request(
+        "POST",
+        openApiURL,
+        headers={"Content-Type": "application/json; charset=UTF-8"},
+        body=json.dumps(requestJson)
+    )
+except:
+    time.sleep(2)
+    response = http.request(
+        "POST",
+        openApiURL,
+        headers={"Content-Type": "application/json; charset=UTF-8"},
+        body=json.dumps(requestJson)
+    )
 
 js = response.data
 y = json.loads(js)
