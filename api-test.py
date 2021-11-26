@@ -25,13 +25,21 @@ requestJson = {
 }
 
 http = urllib3.PoolManager()
-response = http.request(
-    "POST",
-    openApiURL,
-    headers={"Content-Type": "application/json; charset=UTF-8"},
-    body=json.dumps(requestJson)
-)
-
+try:
+    response = http.request(
+        "POST",
+        openApiURL,
+        headers={"Content-Type": "application/json; charset=UTF-8"},
+        body=json.dumps(requestJson)
+    )
+except:
+    time.sleep(2)
+    response = http.request(
+        "POST",
+        openApiURL,
+        headers={"Content-Type": "application/json; charset=UTF-8"},
+        body=json.dumps(requestJson)
+    )
 
 js = response.data
 y = json.loads(js)
