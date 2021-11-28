@@ -2,6 +2,8 @@
 import urllib3
 import json
 import base64
+import time
+start = time.time()
 
 #openApiURL = "http://aiopen.etri.re.kr:8000/WiseASR/Pronunciation"  # 영어
 openApiURL = "http://168.126.63.1:8000/WiseASR/PronunciationKor" # 한국어
@@ -37,4 +39,4 @@ js = response.data
 y = json.loads(js)
 user = y["return_object"]['recognized']
 score = y["return_object"]['score']
-print(user,score)
+print("time :", time.time() - start)  # 현재시각 - 시작시간 = 실행 시간
