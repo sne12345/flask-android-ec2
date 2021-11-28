@@ -1,7 +1,8 @@
 # -*- coding:utf-8 -*-
-import urllib3
+#import urllib3
 import json
 import base64
+import requests
 import time
 start = time.time()
 
@@ -26,17 +27,21 @@ requestJson = {
     }
 }
 
-http = urllib3.PoolManager()
-response = http.request(
-    "POST",
-    openApiURL,
-    headers={"Content-Type": "application/json; charset=UTF-8"},
-    body=json.dumps(requestJson)
+#http = urllib3.PoolManager()
+#response = http.request(
+#    "POST",
+#    openApiURL,
+#    headers={"Content-Type": "application/json; charset=UTF-8"},
+#    body=json.dumps(requestJson)
+#)
+
+response = requests.post( openApiURL,
+                          data = json.dumps(requestJson),
+                          headers={"Content-Type": "application/json; charset=UTF-8"}
 )
 
+y = response.json()
 
-js = response.data
-y = json.loads(js)
 user = y["return_object"]['recognized']
 score = y["return_object"]['score']
 print(user,score)
