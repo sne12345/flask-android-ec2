@@ -70,9 +70,10 @@ class Member_Test:
 
     # 음성 분해
     def segment(self, audio_segment, interval=5000):
+        print('segment start')
         chunks = [audio_segment[i:i + interval] for i in range(0, len(audio_segment), interval)]
         #rawdatas = [chunk.raw_data for chunk in chunks]
-
+        print('chunks 통과')
         audioContents = []
 
         for chunk in chunks:
@@ -105,6 +106,7 @@ class Member_Test:
             headers={"Content-Type": "application/json; charset=UTF-8"},
             body=json.dumps(requestJson)
         )
+        print('pass 1')
 
         js = response.data
         y = json.loads(js)
@@ -210,33 +212,34 @@ class Member_Test:
 
 
     def evaluate(self, audio_file, answer, komoran):
-        try:
-            audio_segment = self.processing_audio(audio_file)
-            audioContents = self.segment(audio_segment, interval=5000)
+        #try:
+        audio_segment = self.processing_audio(audio_file)
+        audioContents = self.segment(audio_segment, interval=5000)
+    
+        user, score = self.score_pronunciation(audioContents)
+        print('채점 완료')
+        return {'correlation': 0, 'expression': 0, 'fluency': 0, 'pronunciation': 0, 'similarity': 0}
+            #user_token, user_nouns, user_all_token = self.tokenizing(komoran, user)
+            #answer_token, answer_nouns, answer_all_token = self.tokenizing(komoran, answer)
+            #user_dict = self.expression(user, user_token, user_all_token)
+            #answer_dict = self.expression(answer, answer_token, answer_all_token)
 
-            user, score = self.score_pronunciation(audioContents)
+            #answer_keyword = self.keyword(answer_nouns)
+            #user_keyword = self.keyword(user_nouns)
 
-            user_token, user_nouns, user_all_token = self.tokenizing(komoran, user)
-            answer_token, answer_nouns, answer_all_token = self.tokenizing(komoran, answer)
-            user_dict = self.expression(user, user_token, user_all_token)
-            answer_dict = self.expression(answer, answer_token, answer_all_token)
+            #flu = self.score_fluency(audio_segment)
+            #pro = score
+            #exp = self.score_expression(user_dict, answer_dict)
+            #sim = self.score_similarity(user_all_token, user_nouns, answer_all_token, answer_nouns)
+            #rel = self.score_relevance(answer_keyword, user_keyword)
 
-            answer_keyword = self.keyword(answer_nouns)
-            user_keyword = self.keyword(user_nouns)
-
-            flu = self.score_fluency(audio_segment)
-            pro = score
-            exp = self.score_expression(user_dict, answer_dict)
-            sim = self.score_similarity(user_all_token, user_nouns, answer_all_token, answer_nouns)
-            rel = self.score_relevance(answer_keyword, user_keyword)
-
-            return dict(zip(['fluency', 'pronunciation', 'expression', 'similarity', 'correlation'], [flu, pro, exp, sim, rel]))
-        except:
-            print('채점 실패')
-            return {'correlation': 0, 'expression': 0, 'fluency': 0, 'pronunciation': 0, 'similarity': 0}
+            #return dict(zip(['fluency', 'pronunciation', 'expression', 'similarity', 'correlation'], [flu, pro, exp, sim, rel]))
+#        except:
+ #           print('채점 실패')
+  #          return {'correlation': 0, 'expression': 0, 'fluency': 0, 'pronunciation': 0, 'similarity': 0}
 
 
-'''
+
 import time
 
 start = time.time()
@@ -244,10 +247,41 @@ from konlpy.tag import Komoran
 
 komoran = Komoran()
 answer = '제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.'
-fname = '/Users/jihyun/project/tokic/score/test/TEST1.mp3'
+fname = './Audio/No1_b7c86adca4794b96_20211126_075936_test.mp3'
+
 # 모의고사 점수내기
 member_test_score = Member_Test()
 print(member_test_score.evaluate(fname,answer,komoran))
 
 print("time :", time.time() - start)  # 현재시각 - 시작시간 = 실행 시간
+'''
+def hello_get():
+
+    # 모의고사 점수내기
+    member_test_score = Member_Test()
+    answer_list = ['제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.']
+
+    total_score = {'similarity':0, 'pronunciation':0, 'fluency':0,'expression':0,'relevance':0}
+
+    # 파이어베이스 Storage에서 데이터 가져오기
+    for i in range(1):
+
+        # Storage에서 mp3 파일 다운받기
+        part_url_name = 'part' + str(i + 1) + '_url'
+        # storage_audio_path = request.form[part_url_name]
+        storage_audio_path = 'User/b7c86adca4794b96/' + 'No' + str(i + 1) + '_b7c86adca4794b96_20211126_075936_test.mp3'
+
+        print(storage_audio_path)
+
+        local_audio_path = './Audio/' + storage_audio_path[-45:]
+        print(local_audio_path)
+        storage.child(storage_audio_path).download(local_audio_path)
+
+        print('download completed')
+        # 채점하기
+        part_score = member_test_score.evaluate(local_audio_path, answer_list[i], komoran)
+        print(part_score)
+        print('evaludate completed')
+
+hello_get()
 '''

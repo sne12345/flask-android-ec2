@@ -4,10 +4,10 @@ import json
 import base64
 
 #openApiURL = "http://aiopen.etri.re.kr:8000/WiseASR/Pronunciation"  # 영어
-openApiURL = "http://aiopen.etri.re.kr:8000/WiseASR/PronunciationKor" # 한국어
+openApiURL = "http://168.126.63.1:8000/WiseASR/PronunciationKor" # 한국어
 
 accessKey = "ac679469-fbf1-4b08-abd7-f2aba1757ae6"
-audioFilePath = "Audio/001_034.pcm"
+audioFilePath = "./Audio/001_034.pcm"
 languageCode = "korean"
 #script = "PRONUNCIATION_SCRIPT"
 
