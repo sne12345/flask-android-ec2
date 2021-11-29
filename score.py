@@ -211,24 +211,35 @@ class Member_Test:
 
     def evaluate(self, audio_file, answer, komoran):
         try:
+            print('채점을 시작합니다 !')
             audio_segment = self.processing_audio(audio_file)
+            print('음성 처리 완료')
             audioContents = self.segment(audio_segment, interval=5000)
-
+            print('음성 분해 완료')
             user, score = self.score_pronunciation(audioContents)
-
+            print('음성 인식 및 발음 평가 완료')
             user_token, user_nouns, user_all_token = self.tokenizing(komoran, user)
+            print('토큰화 진행중')
             answer_token, answer_nouns, answer_all_token = self.tokenizing(komoran, answer)
+            print('토큰화 완료')
             user_dict = self.expression(user, user_token, user_all_token)
+            print('표현력 측정 진행중')
             answer_dict = self.expression(answer, answer_token, answer_all_token)
-
+            print('표현력 측정 완료')
             answer_keyword = self.keyword(answer_nouns)
+            print('키워드 측정중')
             user_keyword = self.keyword(user_nouns)
+            print('키워드 측정 완료')
 
             flu = self.score_fluency(audio_segment)
+            print('유창성 채점 완료')
             pro = score
             exp = self.score_expression(user_dict, answer_dict)
+            print('표현력 채점 완료')
             sim = self.score_similarity(user_all_token, user_nouns, answer_all_token, answer_nouns)
+            print('유사도 채점 완료')
             rel = self.score_relevance(answer_keyword, user_keyword)
+            print('주제의 연관성 채점 완료')
 
             return dict(zip(['fluency', 'pronunciation', 'expression', 'similarity', 'correlation'], [flu, pro, exp, sim, rel]))
         except:
