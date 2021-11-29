@@ -247,7 +247,7 @@ from konlpy.tag import Komoran
 
 komoran = Komoran()
 answer = '제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.'
-fname = './Audio/No1_b7c86adca4794b96_20211126_075936_test.mp3'
+fname = '/home/ubuntu/flask-android-ec2/Audio/KOR_F_RM0769FLJH0325.mp3'
 
 # 모의고사 점수내기
 member_test_score = Member_Test()
