@@ -117,7 +117,7 @@ def hello_post():
     return result_score
 
 @app.route('/score', methods=['POST'])
-def hello_post():
+def score():
     data = request.get_json(force=True)
     fname = '/home/ubuntu/flask-android-ec2/Audio/KOR_F_RM0769FLJH0325.mp3'
     member_test_score = score.Member_Test()
