@@ -244,7 +244,7 @@ class Member_Test:
             return dict(zip(['fluency', 'pronunciation', 'expression', 'similarity', 'correlation'], [flu, pro, exp, sim, rel]))
         except:
             print('채점 실패')
-            return None
+            return {'correlation': 0, 'expression': 0, 'fluency': 0, 'pronunciation': 0, 'similarity': 0}
 
 
 '''
