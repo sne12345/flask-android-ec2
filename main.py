@@ -82,7 +82,7 @@ def hello_post():
         part_url_name = 'part' + str(i + 1) + '_url'
         storage_audio_path = request.form[part_url_name]
 
-        local_audio_path = './Audio/' + storage_audio_path[-45:]
+        local_audio_path = '/home/ubuntu/flask-android-ec2/Audio/' + storage_audio_path[-45:]
         storage.child(storage_audio_path).download(local_audio_path)
 
         # 채점하기

@@ -245,3 +245,62 @@ evaludate completed
 137.226.113.56 - - [28/Nov/2021 09:19:10] "GET /v2/_catalog HTTP/1.1" 404 -
 185.219.52.172 - - [28/Nov/2021 11:21:02] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
 185.219.52.172 - - [28/Nov/2021 11:21:02] "  /*à     Cookie: mstshash=Administr" HTTPStatus.BAD_REQUEST -
+ * Serving Flask app 'main' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.31.52.19:5000/ (Press CTRL+C to quit)
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 07:14:06] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+183.100.117.36 - - [29/Nov/2021 07:14:06] "GET /score HTTP/1.1" 200 -
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 07:14:10] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+183.100.117.36 - - [29/Nov/2021 07:14:10] "GET /score HTTP/1.1" 200 -
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 07:14:16] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+183.100.117.36 - - [29/Nov/2021 07:14:16] "GET /score HTTP/1.1" 200 -
