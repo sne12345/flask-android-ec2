@@ -199,7 +199,7 @@ class Member_Test:
 
     # 주제의 연관성 평가
     def score_relevance(self,answer_keyword, user_keyword):
-        url = 'http://localhost:5000/word2vec'
+        url = 'http://15.165.31.148:5000/word2vec'
         score = requests.get(url, json={'answer': answer_keyword, 'user': user_keyword})
         #score = Member_Test.text_similarity(user_keyword, answer_keyword)
         if score:
