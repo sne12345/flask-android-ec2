@@ -58,6 +58,7 @@ def hello_post():
     android_id = request.form['android_id']
     test_type = request.form['test_or_verify']
     start_date = request.form['date_time']
+    print('request pass')
 
     # 모의고사 점수내기
     member_test_score = score.Member_Test()
@@ -84,6 +85,7 @@ def hello_post():
 
         local_audio_path = '/home/ubuntu/flask-android-ec2/Audio/' + storage_audio_path[-45:]
         storage.child(storage_audio_path).download(local_audio_path)
+        print(i,'번째 다운로드 완료')
 
         # 채점하기
         part_score = member_test_score.evaluate(local_audio_path, answer_list[i], komoran)

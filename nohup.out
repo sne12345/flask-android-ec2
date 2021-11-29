@@ -304,3 +304,366 @@ evaludate completed
 주제의 연관성 채점 완료
 채점이 완료되었습니다!
 183.100.117.36 - - [29/Nov/2021 07:14:16] "GET /score HTTP/1.1" 200 -
+ * Serving Flask app 'main' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.31.52.19:5000/ (Press CTRL+C to quit)
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 07:16:21] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+183.100.117.36 - - [29/Nov/2021 07:16:21] "GET /score HTTP/1.1" 200 -
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 07:22:37] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+183.100.117.36 - - [29/Nov/2021 07:22:37] "GET /score HTTP/1.1" 200 -
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 07:29:06] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+183.100.117.36 - - [29/Nov/2021 07:29:06] "GET /score HTTP/1.1" 200 -
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 08:10:35] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+183.100.117.36 - - [29/Nov/2021 08:10:35] "GET /score HTTP/1.1" 200 -
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 08:33:25] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+183.100.117.36 - - [29/Nov/2021 08:33:25] "GET /score HTTP/1.1" 200 -
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 08:51:37] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+183.100.117.36 - - [29/Nov/2021 08:51:37] "GET /score HTTP/1.1" 200 -
+ * Serving Flask app 'main' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.31.52.19:5000/ (Press CTRL+C to quit)
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 10:01:47] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+218.55.196.9 - - [29/Nov/2021 10:01:47] "GET /score HTTP/1.1" 200 -
+112.169.253.149 - - [29/Nov/2021 10:08:52] "POST /postpost HTTP/1.1" 404 -
+218.55.196.9 - - [29/Nov/2021 10:11:06] "GET / HTTP/1.1" 200 -
+218.55.196.9 - - [29/Nov/2021 10:11:06] "GET /favicon.ico HTTP/1.1" 404 -
+218.55.196.9 - - [29/Nov/2021 10:11:12] "GET /post HTTP/1.1" 405 -
+218.55.196.9 - - [29/Nov/2021 10:11:17] "GET /score HTTP/1.1" 400 -
+218.55.196.9 - - [29/Nov/2021 10:11:21] "GET / HTTP/1.1" 200 -
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 10:11:36] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+218.55.196.9 - - [29/Nov/2021 10:11:36] "GET /score HTTP/1.1" 200 -
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 10:14:15] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+218.55.196.9 - - [29/Nov/2021 10:14:15] "GET /score HTTP/1.1" 200 -
+218.55.196.9 - - [29/Nov/2021 10:14:15] "GET /post HTTP/1.1" 405 -
+112.169.253.149 - - [29/Nov/2021 10:14:18] "POST /postpost HTTP/1.1" 404 -
+request pass
+0 번째 다운로드 완료
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+[2021-11-29 10:17:34,189] ERROR in app: Exception on /word2vec [GET]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/flask/app.py", line 1519, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/flask/app.py", line 1538, in finalize_request
+    response = self.make_response(rv)
+  File "/home/ubuntu/.local/lib/python3.8/site-packages/flask/app.py", line 1701, in make_response
+    raise TypeError(
+TypeError: The view function for 'sim_score' did not return a valid response. The function either returned None or ended without a return statement.
+15.165.31.148 - - [29/Nov/2021 10:17:34] "GET /word2vec HTTP/1.1" 500 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+{'fluency': 100, 'pronunciation': 40, 'expression': 8, 'similarity': 0, 'correlation': 0}
+1 번째 다운로드 완료
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+채점 실패
+{'correlation': 0, 'expression': 0, 'fluency': 0, 'pronunciation': 0, 'similarity': 0}
+2 번째 다운로드 완료
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+채점 실패
+{'correlation': 0, 'expression': 0, 'fluency': 0, 'pronunciation': 0, 'similarity': 0}
+3 번째 다운로드 완료
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+채점 실패
+{'correlation': 0, 'expression': 0, 'fluency': 0, 'pronunciation': 0, 'similarity': 0}
+4 번째 다운로드 완료
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+채점 실패
+{'correlation': 0, 'expression': 0, 'fluency': 0, 'pronunciation': 0, 'similarity': 0}
+5 번째 다운로드 완료
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+채점 실패
+{'correlation': 0, 'expression': 0, 'fluency': 0, 'pronunciation': 0, 'similarity': 0}
+112.169.253.149 - - [29/Nov/2021 10:17:51] "POST /post HTTP/1.1" 200 -
+request pass
+0 번째 다운로드 완료
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 10:20:42] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+{'fluency': 100, 'pronunciation': 80, 'expression': 100, 'similarity': 58, 'correlation': 25}
+1 번째 다운로드 완료
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 10:20:52] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+{'fluency': 100, 'pronunciation': 80, 'expression': 100, 'similarity': 57, 'correlation': 3}
+2 번째 다운로드 완료
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 10:21:05] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+{'fluency': 100, 'pronunciation': 40, 'expression': 59, 'similarity': 26, 'correlation': 2}
+3 번째 다운로드 완료
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 10:21:13] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+{'fluency': 100, 'pronunciation': 60, 'expression': 95, 'similarity': 67, 'correlation': 17}
+4 번째 다운로드 완료
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 10:21:27] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+{'fluency': 100, 'pronunciation': 60, 'expression': 59, 'similarity': 58, 'correlation': 29}
+5 번째 다운로드 완료
+채점을 시작합니다 !
+음성 처리 완료
+음성 분해 완료
+음성 인식 및 발음 평가 완료
+토큰화 진행중
+토큰화 완료
+표현력 측정 진행중
+표현력 측정 완료
+키워드 측정중
+키워드 측정 완료
+유창성 채점 완료
+표현력 채점 완료
+유사도 채점 완료
+15.165.31.148 - - [29/Nov/2021 10:21:34] "GET /word2vec HTTP/1.1" 200 -
+주제의 연관성 채점 완료
+채점이 완료되었습니다!
+{'fluency': 100, 'pronunciation': 40, 'expression': 62, 'similarity': 83, 'correlation': 42}
+112.169.253.149 - - [29/Nov/2021 10:21:35] "POST /post HTTP/1.1" 200 -
