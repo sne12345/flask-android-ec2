@@ -116,7 +116,7 @@ def hello_post():
 
     return result_score
 
-@app.route('/score', methods=['POST'])
+@app.route('/score', methods=['GET'])
 def score():
     data = request.get_json(force=True)
     fname = '/home/ubuntu/flask-android-ec2/Audio/KOR_F_RM0769FLJH0325.mp3'
@@ -126,7 +126,7 @@ def score():
         return jsonify(output)
     else:
         print('채점 실패')
-        return None
+        return {'correlation': 0, 'expression': 0, 'fluency': 0, 'pronunciation': 0, 'similarity': 0}
 
 
 
