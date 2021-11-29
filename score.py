@@ -240,7 +240,7 @@ class Member_Test:
             print('유사도 채점 완료')
             rel = self.score_relevance(answer_keyword, user_keyword)
             print('주제의 연관성 채점 완료')
-
+            print('채점이 완료되었습니다!')
             return dict(zip(['fluency', 'pronunciation', 'expression', 'similarity', 'correlation'], [flu, pro, exp, sim, rel]))
         except:
             print('채점 실패')
