@@ -121,9 +121,8 @@ def hello_post():
 @app.route('/score', methods=['GET'])
 def test_score():
     data = request.get_json(force=True)
-    fname = '/home/ubuntu/flask-android-ec2/Audio/KOR_F_RM0769FLJH0325.mp3'
     member_test_score = score.Member_Test()
-    output = member_test_score.evaluate(fname,data['answer'],komoran)
+    output = member_test_score.evaluate(data['fname'],data['answer'],komoran)
     #output = "안녕 ?"
     if output:
         return jsonify(output)
