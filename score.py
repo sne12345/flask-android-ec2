@@ -70,10 +70,9 @@ class Member_Test:
 
     # 음성 분해
     def segment(self, audio_segment, interval=5000):
-        print('segment start')
         chunks = [audio_segment[i:i + interval] for i in range(0, len(audio_segment), interval)]
         #rawdatas = [chunk.raw_data for chunk in chunks]
-        print('chunks 통과')
+
         audioContents = []
 
         for chunk in chunks:
@@ -106,7 +105,6 @@ class Member_Test:
             headers={"Content-Type": "application/json; charset=UTF-8"},
             body=json.dumps(requestJson)
         )
-        print('pass 1')
 
         js = response.data
         y = json.loads(js)
@@ -201,7 +199,7 @@ class Member_Test:
 
     # 주제의 연관성 평가
     def score_relevance(self,answer_keyword, user_keyword):
-        url = 'http://3.145.8.27:5000/word2vec'
+        url = 'http://15.165.31.148:5000/word2vec'
         score = requests.get(url, json={'answer': answer_keyword, 'user': user_keyword})
         #score = Member_Test.text_similarity(user_keyword, answer_keyword)
         if score:
@@ -212,34 +210,44 @@ class Member_Test:
 
 
     def evaluate(self, audio_file, answer, komoran):
-        #try:
-        audio_segment = self.processing_audio(audio_file)
-        audioContents = self.segment(audio_segment, interval=5000)
-    
-        user, score = self.score_pronunciation(audioContents)
-        print('채점 완료')
-        return {'correlation': 0, 'expression': 0, 'fluency': 0, 'pronunciation': 0, 'similarity': 0}
-            #user_token, user_nouns, user_all_token = self.tokenizing(komoran, user)
-            #answer_token, answer_nouns, answer_all_token = self.tokenizing(komoran, answer)
-            #user_dict = self.expression(user, user_token, user_all_token)
-            #answer_dict = self.expression(answer, answer_token, answer_all_token)
+        try:
+            print('채점을 시작합니다 !')
+            audio_segment = self.processing_audio(audio_file)
+            print('음성 처리 완료')
+            audioContents = self.segment(audio_segment, interval=5000)
+            print('음성 분해 완료')
+            user, score = self.score_pronunciation(audioContents)
+            print('음성 인식 및 발음 평가 완료')
+            user_token, user_nouns, user_all_token = self.tokenizing(komoran, user)
+            print('토큰화 진행중')
+            answer_token, answer_nouns, answer_all_token = self.tokenizing(komoran, answer)
+            print('토큰화 완료')
+            user_dict = self.expression(user, user_token, user_all_token)
+            print('표현력 측정 진행중')
+            answer_dict = self.expression(answer, answer_token, answer_all_token)
+            print('표현력 측정 완료')
+            answer_keyword = self.keyword(answer_nouns)
+            print('키워드 측정중')
+            user_keyword = self.keyword(user_nouns)
+            print('키워드 측정 완료')
 
-            #answer_keyword = self.keyword(answer_nouns)
-            #user_keyword = self.keyword(user_nouns)
+            flu = self.score_fluency(audio_segment)
+            print('유창성 채점 완료')
+            pro = score
+            exp = self.score_expression(user_dict, answer_dict)
+            print('표현력 채점 완료')
+            sim = self.score_similarity(user_all_token, user_nouns, answer_all_token, answer_nouns)
+            print('유사도 채점 완료')
+            rel = self.score_relevance(answer_keyword, user_keyword)
+            print('주제의 연관성 채점 완료')
+            print('채점이 완료되었습니다!')
+            return dict(zip(['fluency', 'pronunciation', 'expression', 'similarity', 'correlation'], [flu, pro, exp, sim, rel]))
+        except:
+            print('채점 실패')
+            return {'correlation': 0, 'expression': 0, 'fluency': 0, 'pronunciation': 0, 'similarity': 0}
 
-            #flu = self.score_fluency(audio_segment)
-            #pro = score
-            #exp = self.score_expression(user_dict, answer_dict)
-            #sim = self.score_similarity(user_all_token, user_nouns, answer_all_token, answer_nouns)
-            #rel = self.score_relevance(answer_keyword, user_keyword)
 
-            #return dict(zip(['fluency', 'pronunciation', 'expression', 'similarity', 'correlation'], [flu, pro, exp, sim, rel]))
-#        except:
- #           print('채점 실패')
-  #          return {'correlation': 0, 'expression': 0, 'fluency': 0, 'pronunciation': 0, 'similarity': 0}
-
-
-
+'''
 import time
 
 start = time.time()
@@ -247,41 +255,10 @@ from konlpy.tag import Komoran
 
 komoran = Komoran()
 answer = '제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.'
-fname = './Audio/No1_b7c86adca4794b96_20211126_075936_test.mp3'
-
+fname = '/home/ubuntu/flask-android-ec2/Audio/KOR_F_RM0769FLJH0325.mp3'
 # 모의고사 점수내기
 member_test_score = Member_Test()
 print(member_test_score.evaluate(fname,answer,komoran))
 
 print("time :", time.time() - start)  # 현재시각 - 시작시간 = 실행 시간
-'''
-def hello_get():
-
-    # 모의고사 점수내기
-    member_test_score = Member_Test()
-    answer_list = ['제 취미는 영화보기에요.저는 시간있을 때 영화관에 가요. 재미있는 영화를 봐요.']
-
-    total_score = {'similarity':0, 'pronunciation':0, 'fluency':0,'expression':0,'relevance':0}
-
-    # 파이어베이스 Storage에서 데이터 가져오기
-    for i in range(1):
-
-        # Storage에서 mp3 파일 다운받기
-        part_url_name = 'part' + str(i + 1) + '_url'
-        # storage_audio_path = request.form[part_url_name]
-        storage_audio_path = 'User/b7c86adca4794b96/' + 'No' + str(i + 1) + '_b7c86adca4794b96_20211126_075936_test.mp3'
-
-        print(storage_audio_path)
-
-        local_audio_path = './Audio/' + storage_audio_path[-45:]
-        print(local_audio_path)
-        storage.child(storage_audio_path).download(local_audio_path)
-
-        print('download completed')
-        # 채점하기
-        part_score = member_test_score.evaluate(local_audio_path, answer_list[i], komoran)
-        print(part_score)
-        print('evaludate completed')
-
-hello_get()
 '''
